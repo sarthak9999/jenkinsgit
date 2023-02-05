@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment {
-        d_c=credentials("dockerpass")
+        DOCKERHUB_CREDENTIALS= credentials("dockerpass")
     }
     stages{
         stage("git clone"){
@@ -18,7 +18,8 @@ pipeline{
         
         stage("login"){
             steps{
-                bat ("echo $d_c_PSW | docker login -u sart22 -p sarthakdocker") 
+                // echo DOCKERHUB_CREDENTIALS
+                bat ("echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u sart22 -p sarthakdocker") 
             }
         }
 
