@@ -5,4 +5,4 @@ stage("building"){
     echo "Building"
     bat ("docker --version") 
 }
-}~
+}
