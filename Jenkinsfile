@@ -18,8 +18,8 @@ pipeline{
         
         stage("login"){
             steps{
-                bat 'echo %DOCKERHUB_CREDENTIALS_USR%'
-                // bat ("echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin") 
+                // bat 'echo %DOCKERHUB_CREDENTIALS_USR%'
+                bat 'echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin' 
             }
         }
 
