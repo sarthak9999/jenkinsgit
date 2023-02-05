@@ -12,17 +12,29 @@ pipeline{
 
         stage("building image"){
             steps{
+                echo "$BUILD_NUMBER here--------"
                 bat ("docker build -t sart22/image1 .") 
             }
         }
         
         stage("login"){
             steps{
-                // bat 'echo %DOCKERHUB_CREDENTIALS_USR%'
+                // attention on how to use quotes with $ sign 
                 bat 'docker login -u %DOCKERHUB_CREDENTIALS_USR% -p %DOCKERHUB_CREDENTIALS_PSW%' 
             }
         }
+        
+        stage("push image to docker"){
+            steps{
+                bat 'docker push sart22/image1 ' 
+            }
+        }
 
+    }
+    post{
+        always{
+            bat 'docker logout'
+        }
     }
 }
 
