@@ -18,7 +18,7 @@ pipeline{
         
         stage("login"){
             steps{
-                bat ("echo $d_c_PSW | docker login -u d_c_USR --password-stdin") 
+                bat ("echo $d_c_PSW | docker login -u sart22 -p sarthakdocker") 
             }
         }
 
