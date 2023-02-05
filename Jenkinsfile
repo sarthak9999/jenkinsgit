@@ -3,6 +3,6 @@ node
 checkout scm
 stage("building"){
     echo "Building"
-    bat ("docker --version") 
+    bat ("docker build -t image1 .") 
 }
-}~
+}
