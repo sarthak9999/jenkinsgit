@@ -1,7 +1,7 @@
 node
 {
 checkout scm
-imagename=image1
+def imagename='image1'
 stage("building docker image"){
     bat ("docker build -t ${imagename} .") 
 }
