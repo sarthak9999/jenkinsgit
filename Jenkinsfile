@@ -3,6 +3,6 @@ node
 checkout scm
 stage("building"){
     echo "Building"
-    echo "${docker --version}"
+    sh("docker --version") 
 }
 }
