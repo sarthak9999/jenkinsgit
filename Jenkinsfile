@@ -1,15 +1,17 @@
 node
 {
 checkout scm
-def imagename='image1'
+
+environment{
+    DOCKERHUB_CREDENTIALS=credetilals("dockerpass")
+}
 stage("building docker image"){
-    bat ("docker build -t ${imagename} .") 
+    bat ("docker build -t sart22/image1 .") 
 }
 
 stage("push image to docker hub"){
-    withCredentials([string(credentialsId: 'dockerpwd', variable: 'dockerpwd')]) {
-    bat ('docker login -u sart22 -p ${dockerpwd}')
-}
-    bat ('docker push ${imagename}} ')
+    bat ("$DOCKERHUB_CREDENTIALS_USR")
+    // bat ('docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin')
+    // bat ('docker push sart22/image1 ')
 }
 }
